@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JEEZYS VERIFICATION - Christmas Edition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffefef;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #d72638; /* Christmas red */
+            font-size: 2.5em;
+        }
+
+        p {
+            color: #2c5f2d; /* Christmas green */
+            font-size: 1.2em;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: 20px 0;
+            border: 2px solid #2c5f2d;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ffffff;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #d72638;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #2c5f2d; /* Switch to green on hover */
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9f4f4;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .result img {
+            width: 300px;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 10px;
+        }
+
+        .tree-logo {
+            margin: 20px auto;
+            display: block;
+            width: 80px; /* Adjusted for the new logo size */
+            height: auto;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Updated Logo -->
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-0oWoUP_VlKAYh8OsLUhJ7_fxzJdInxG3-w&s" 
+         alt="Christmas Logo" class="tree-logo">
+
+    <h1>JEEZYS VERIFICATION 🎄</h1>
+    <p>Ho Ho Ho! Enter a sneaker name below to verify it and learn more.</p>
+
+    <input type="text" id="sneakerName" placeholder="Enter Sneaker Name">
+    <button onclick="verifySneaker()">Verify Sneaker</button>
+
+    <div class="result" id="result">
+        <h2>🎁 Information:</h2>
+        <p id="info"></p>
+        <img id="sneakerImage" src="" alt="Sneaker Image">
+    </div>
+
+    <footer>Made with holiday cheer! 🎅</footer>
+
+    <script>
+        const sneakersDatabase = {
+            "Air Force 1": {
+                description: "The Air Force 1 is a timeless Nike sneaker, popular for its clean design and versatility in all styles.",
+                image: "https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco/b7d9211c-26e7-431a-ac24-b0540fb3c00f/AIR+FORCE+1+%2707.png"
+            },
+            "Air Jordan 1": {
+                description: "The Air Jordan 1 is a classic basketball sneaker, famous for its connection with Michael Jordan and its streetwear appeal.",
+                image: "https://m.media-amazon.com/images/I/71HWbK3LX6L._AC_UY900_.jpg"
+            },
+            "Yeezy 350 V2": {
+                description: "Yeezy 350 V2 is a popular sneaker from Adidas and Kanye West's Yeezy brand, known for its comfort and stylish design.",
+                image: "https://m.media-amazon.com/images/I/71MfqfyCD+L._AC_UY900_.jpg"
+            },
+            "Yeezy 700": {
+                description: "The Yeezy 700 is a chunky sneaker with a futuristic look, known for its comfort and high resale value.",
+                image: "https://preview.redd.it/bww9yqdowjk91.jpg?width=640&crop=smart&auto=webp&s=0c98bee4b94b88f857f473251a81902c57ad1304"
+            },
+            "Nike Dunk Low": {
+                description: "The Nike Dunk Low has become a staple in the sneaker community, widely recognized for its classic design and collaborations.",
+                image: "https://static.nike.com/a/images/w_1280,q_auto,f_auto/76c3cae1-4b87-4dc5-9d11-efc74fccd3d6/sb-dunk-low-what-the-paul-release-date.jpg"
+            },
+            "New Balance 550": {
+                description: "The New Balance 550 is a retro-style sneaker that has gained massive popularity in the streetwear scene.",
+                image: "https://nb.scene7.com/is/image/NB/bb550esb_nb_02_i?$dw_detail_gallery$"
+            },
+            "Nike Air Max 97": {
+                description: "The Nike Air Max 97 is known for its sleek, wave-like design and its visible Air unit for comfort.",
+                image: "https://m.media-amazon.com/images/I/8169gKSiPIL._AC_SL1500_.jpg"
+            }
+        };
+
+        function verifySneaker() {
+            const sneakerName = document.getElementById('sneakerName').value.trim();
+            const resultDiv = document.getElementById('result');
+            const infoText = document.getElementById('info');
+            const sneakerImage = document.getElementById('sneakerImage');
+
+            if (sneakerName === "") {
+                alert("Please enter a sneaker name.");
+                return;
+            }
+
+            const sneaker = sneakersDatabase[sneakerName];
+
+            if (sneaker) {
+                infoText.textContent = sneaker.description;
+                sneakerImage.src = sneaker.image;
+                sneakerImage.style.display = "block";
+                resultDiv.style.display = 'block';
+            } else {
+                infoText.textContent = "Sorry, we couldn't find information about this sneaker. Please try another name.";
+                sneakerImage.style.display = "none";
+                resultDiv.style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+</html>
